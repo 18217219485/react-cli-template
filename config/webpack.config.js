@@ -26,14 +26,19 @@ module.exports = {
                 use: {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['es2015', 'react']
+                            presets: ['es2015', 'react', 'stage-0'] // transform-class-properties这babel的四个插件缺一不可
                         }
                     },
                 exclude: /node_modules/
             },
             {
                 test: /\.(css|less)$/,
-                use: ['style-loader', 'css-loader', 'less-loader'],
+                use: ['style-loader', 'css-loader', 'less-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {javascriptEnabled: true} // 兼容less.3x以及3x以上的版本
+                    }
+                ],
                 exclude: /node_modules/
             },
             {
