@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = {
     entry: path.join(__dirname, '../src/index.js'),
     output: {
-        path: path.resolve(__dirname, 'output'),
+        path: path.resolve(__dirname),
         filename: 'bundle.js'
     },
     devtool: 'eval-source-map',
@@ -22,19 +22,23 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)$/,
                 use: {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['es2015', 'react']
-                        }
-                    },
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015', 'react', 'stage-0'] // transform-class-properties这babel的四个插件缺一不可
+                    }
+                },
                 exclude: /node_modules/
             },
             {
-                test: /\.(css|less)$/,
-                use: ['style-loader', 'css-loader', 'less-loader'],
-                exclude: /node_modules/
+                test: /\.(less|css)$/,
+                use: ['style-loader', 'css-loader', 'less-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {javascriptEnabled: true} // 兼容less.3x以及3x以上的版本
+                    }
+                ]
             },
             {
                 test: /\.(png|jpe?g|svg)$/,
