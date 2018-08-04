@@ -4,7 +4,13 @@
 const webpack = require('webpack'); // 访问内置插件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const express = require('express');
+const app = express();
 
+app.get('/', function (req, res) {
+    res.send('hello world');
+});
+app.listen(8008);
 module.exports = {
     entry: path.join(__dirname, '../src/index.js'),
     output: {
@@ -33,10 +39,10 @@ module.exports = {
             },
             {
                 test: /\.(less|css)$/,
-                use: ['style-loader', 'css-loader', 'less-loader',
+                use: ['style-loader', 'css-loader',
                     {
                         loader: 'less-loader',
-                        options: {javascriptEnabled: true} // 兼容less.3x以及3x以上的版本
+                        options: {javascriptEnabled: true}  // 兼容less.3x以及3x以上的版本
                     }
                 ]
             },

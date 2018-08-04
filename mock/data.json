@@ -1,0 +1,11 @@
+{
+    "use": {
+        "code": "000",
+        "message": "发送请求成功",
+        "content": {
+            "name": "Good",
+            "age": "16",
+            "address": "上海市浦东新区"
+        }
+    }
+}
