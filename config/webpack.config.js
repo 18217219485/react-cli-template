@@ -23,7 +23,10 @@ module.exports = {
         hot: true, // 是否使用热更新
         compress: true, // 压缩
         historyApiFallback: true,
-        contentBase: path.join(__dirname, 'output') // 从哪里访问文件
+        contentBase: path.join(__dirname, 'output'), // 从哪里访问文件
+        proxy: {
+            '/api': 'http://www.baidu.com'
+        }
     },
     module: {
         rules: [
