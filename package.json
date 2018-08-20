@@ -10,7 +10,6 @@
     "start": "npm run dev",
     "build": "webpack --mode production --config config/webpack.config.prod.js"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "antd": "^3.7.0",
