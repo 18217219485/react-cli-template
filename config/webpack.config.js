@@ -4,15 +4,12 @@
 const webpack = require('webpack'); // 访问内置插件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const express = require('express');
-const app = express();
-
-app.get('/', function (req, res) {
-    res.send('hello world');
-});
-app.listen(8008);
+const apiMocker = require('webpack-api-mocker');
+const mocker = path.resolve(__dirname, '../mock/index.js');
 module.exports = {
-    entry: path.join(__dirname, '../src/index.js'),
+    entry: {
+        app: path.join(__dirname, '../src/index.js')
+    },
     output: {
         path: path.resolve(__dirname),
         filename: 'bundle.js'
@@ -24,8 +21,12 @@ module.exports = {
         compress: true, // 压缩
         historyApiFallback: true,
         contentBase: path.join(__dirname, 'output'), // 从哪里访问文件
-        proxy: {
-            '/api': 'http://www.baidu.com'
+        before(app) {
+            apiMocker(app, mocker, {
+                proxy: {
+                    '/api/*': 'https://localhost:8009'
+                }
+            });
         }
     },
     module: {

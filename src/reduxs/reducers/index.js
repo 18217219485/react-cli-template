@@ -1,10 +1,10 @@
 /**
- * @file reducers 的index文件
+ * @file
  */
 import {combineReducers} from 'redux';
 import todo from './todo';
-import visibilityFilter from './visibilityFilter';
+import thrunk from './thrunk';
 export default combineReducers({
     todo,
-    visibilityFilter
+    thrunk
 });

@@ -4,12 +4,18 @@
 import React from 'react';
 import AntTable from '../../component/antComponent/antTable.jsx';
 import localData from '../../component/antComponent/localData/antTableData';
-// import {Table} from 'antd';
+import common from '../../common';
 import './login.less';
 export default class Login extends React.Component {
     handleClick = (id, type) => {
-        console.log('每条数据的' + id);
-        console.log('每条数据类型' + type);
+        common.fetch({
+            url: 'api/user/manager',
+            method: 'POST'
+        }).then(response => {
+            console.log(response);
+        }).catch(err => {
+            console.log('错误码' + err);
+        });
     }
     render() {
         return (

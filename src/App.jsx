@@ -2,7 +2,7 @@
  * 项目根组件
 */
 import React from 'react';
-import Demo from './redux/component/index.jsx';
+import Demo from './reduxs/containers/thrunk.jsx';
 import './App.less';
 
 export default class App extends React.Component {
@@ -14,4 +14,3 @@ export default class App extends React.Component {
         );
     }
 }
-
