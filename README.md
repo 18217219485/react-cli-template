@@ -1,5 +1,1 @@
 # react-templates
-
-项目开发中如何模拟网络请求
-开启的mock服务或者express服务如何与webpack开启的服务兼容
-跨域的问题如何解决
