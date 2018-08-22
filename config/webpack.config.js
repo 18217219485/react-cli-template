@@ -8,8 +8,7 @@ const path = require('path');
 module.exports = {
     entry: path.join(__dirname, '../src/index.js'),
     output: {
-        path: path.resolve(__dirname, 'output'),
-        filename: 'bundle.js'
+        publicPath: ''
     },
     devtool: 'eval-source-map',
     devServer: {

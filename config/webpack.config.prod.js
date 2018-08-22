@@ -11,7 +11,8 @@ module.exports = {
     entry: path.join(__dirname, '../src/index.js'),
     output: {
         path: path.resolve(__dirname, '../output'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        publicPath: ''
     },
     devtool: 'source-map',
     module: {
