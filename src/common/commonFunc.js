@@ -1,7 +1,5 @@
-import { EPROTONOSUPPORT } from "constants";
-
 /**
- * @file 公共方法(ajax,getQuery,getCookie,setCookie,getUniqueValue)
+ * @file 公共方法
  * @data 2018-07-23
  */
 
@@ -57,10 +55,26 @@ let commonFunc = {
                 });
             };
         });
+    },
+    getQuery: name => {
+        const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        const r = window.location.search.substr(1).match(reg);
+        if (r !== null) {
+            return decodeURIComponent(r[2]);
+        }
+    },
+    setCookie: (name, value, execday) => {
+        const d = new Date();
+        d.setTime(d.getTime() + execday * 24 * 60 * 60 * 1000);
+        let expires = 'expires=' + d.toUTCString();
+        document.cookie = name + '=' + value + ';' + expires;
+    },
+    getCookie: name => {
+        const reg = new RegExp('(^|)' + name + '=([^;]*)(;|$)');
+        const r = document.cookie.match(reg);
+        if (r !== null) {
+            return r[2];
+        }
     }
 };
 export default commonFunc;
-
-
-
-
