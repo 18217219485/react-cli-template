@@ -1,7 +1,7 @@
 {
-  "name": "react-cli-template",
+  "name": "{{projectName}",
   "version": "1.0.0",
-  "description": "react-cli-template",
+  "description": "{{projectDescription}}",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "build": "webpack --mode production --config config/webpack.config.prod.js"
   },
-  "author": "",
+  "author": "{{projectAuthor}}",
   "license": "ISC",
   "dependencies": {
     "react": "^16.4.1",
