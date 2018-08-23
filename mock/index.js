@@ -1,12 +1,19 @@
 /**
- * @file mock造数据
+ * @file 模拟接口
  */
-const Mock = require('mockjs');
-const data = Mock.mock({
-    'list|1-10': [{
-        'id|+1': 1,
-        'email': '@EMAIL',
-        'name': '@name'
-    }]
-});
-console.log(JSON.stringify(data, null, 5));
+const proxy = {
+    'GET /api/user/message': {
+        code: '0',
+        message: '请求发送成功',
+        content: {
+            id: 1,
+            name: 'Jake'
+        }
+    },
+    'POST /api/send/message': {
+        code: '0',
+        message: '请求发送成功',
+        content: {}
+    }
+};
+module.exports = proxy;
