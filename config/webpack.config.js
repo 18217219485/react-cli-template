@@ -4,9 +4,13 @@
 const webpack = require('webpack'); // 访问内置插件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpackApiMocker = require('webpack-api-mocker');
+const mocker = path.resolve(__dirname, '../mock/index.js');
 
 module.exports = {
-    entry: path.join(__dirname, '../src/index.js'),
+    entry: {
+        app: path.join(__dirname, '../src/index.js')
+    },
     output: {
         publicPath: ''
     },
@@ -16,7 +20,14 @@ module.exports = {
         hot: true, // 是否使用热更新
         compress: true, // 压缩
         historyApiFallback: true,
-        contentBase: path.join(__dirname, 'output') // 从哪里访问文件
+        contentBase: path.join(__dirname, 'output'), // 从哪里访问文件
+        before(app) {
+            webpackApiMocker(app, mocker, {
+                proxy: {
+                    '/api/*': 'http://localhost:8009'
+                }
+            });
+        }
     },
     module: {
         rules: [
