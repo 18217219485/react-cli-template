@@ -22,11 +22,7 @@ module.exports = {
         historyApiFallback: true,
         contentBase: path.join(__dirname, 'output'), // 从哪里访问文件
         before(app) {
-            webpackApiMocker(app, mocker, {
-                proxy: {
-                    '/api/**': 'http://localhost:8009'
-                }
-            });
+            webpackApiMocker(app, mocker);
         }
     },
     module: {
